@@ -13,10 +13,13 @@ function fillButton(index, text) {
 
 // pre-made a function. You can use this function to present an alert to say someone wins
 function winningAlert(winner) {
-  if (confirm(`Horraaay, ${winner} wins!`)) {
-    // The code here will be exectued if you press on OK button that will pop on the window
-    restartGame()
-  }
+  setTimeout(function() {
+    if (confirm(`Horraaay, ${winner} wins!`)) {
+      // The code here will be exectued if you press on OK button that will pop on the window
+      restartGame()
+    }
+  }, 0)
+  
 }
 let turn = true
 playArray = [
@@ -89,6 +92,8 @@ function clickButton(index) {
     symbObj.type = "x"
     fillButton(index, symbObj.type);
     turn = !turn
+    checkWinner();
+
     }
     }
   });;
@@ -102,11 +107,12 @@ function clickButton(index) {
       symbObj.type = "o"
       fillButton(index, symbObj.type);
       turn = !turn
+      checkWinner();
+
       }
       }
     });;
   }
-  checkWinner();
 }
 
 
@@ -178,6 +184,7 @@ function tieAlert(){
   alert("It's A TIE!!!")
   restartGame()
 }
+
 /**
  * (Optional) It's always a good idea to make a function for every single purpose.
  */
